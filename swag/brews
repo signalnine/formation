@@ -7,3 +7,6 @@ hub
 hugo
 yarn
 rbenv
+zsh
+htop
+tmux

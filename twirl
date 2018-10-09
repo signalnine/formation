@@ -519,13 +519,16 @@ create_ssh_key() {
 }
 
 ssh_key_setup() {
-    local pub=$HOME/.ssh/id_rsa.pub
-
-    if ! [[ -f $pub ]]; then
+    local pub=$HOME/.ssh/*.pub
+   for i in $pub
+     do
+       if  [ -f "$i" ]
+       then
+         github_key_check
+       else
         create_ssh_key
-    else
-        github_key_check
-    fi
+       fi
+  done
 }
 
 mas_setup() {
@@ -637,9 +640,9 @@ label_green() {
     printf "\e[30;42m $1 \e[0m\e[32m $2 \033[0m\n"
 }
 
-e-lemon-ated() {
+e_lemon_ated() {
     printf "
-  ${bold}Congrats! You're in formation!${normal} 🍋
+  ${bold}Congrats! You're in formation!${normal} 
 
   ╭────────────────────────────────────────────────────╮
   │ Thanks for using Formation!                        │
